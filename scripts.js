@@ -1,6 +1,8 @@
 "use strict";
-
+const FAQ_PAGE = "./faq/faq.html";
 const TASKS_PAGE = "./tasks/tasks.html";
+const DOCS_PAGE = "./docs/docs.html";
+const SAMPLE_PAGE = "./sample/sample.html";
 
 const ROUTES = [
   {
@@ -12,7 +14,7 @@ const ROUTES = [
     },
   },
   {
-    matcher: /#(faq|tasks)/,
+    matcher: /#(faq|tasks|docs|sample)/,
     getPath: (hash) => {
       const pathWithoutHash = hash.slice(1);
 
@@ -21,18 +23,18 @@ const ROUTES = [
   },
 ];
 
-function generateTaskPath(numberOfTask) {
-  return `./examples/task${numberOfTask}/task${numberOfTask}.html`;
-}
+// function generateTaskPath(numberOfTask) {
+//   return `./examples/task${numberOfTask}/task${numberOfTask}.html`;
+// }
 
-function selectTask(numberOfTask) {
-  document
-    .getElementById("iframe")
-    .setAttribute("src", generateTaskPath(numberOfTask));
-}
+// function selectTask(numberOfTask) {
+//   document
+//     .getElementById("iframe")
+//     .setAttribute("src", generateTaskPath(numberOfTask));
+// }
 
 function initPage() {
-  document.getElementById("iframe").setAttribute("src", generateTaskPath(1));
+  document.getElementById("iframe").setAttribute("src", TASKS_PAGE);
 }
 
 function goToPage() {
@@ -49,6 +51,18 @@ function goToPage() {
 
 function openTaskDescription() {
   document.getElementById("iframe").setAttribute("src", TASKS_PAGE);
+}
+
+function openFAQ() {
+  document.getElementById("iframe").setAttribute("src", FAQ_PAGE);
+}
+
+function openDocuments() {
+  document.getElementById("iframe").setAttribute("src", DOCS_PAGE);
+}
+
+function openSample() {
+  document.getElementById("iframe").setAttribute("src", SAMPLE_PAGE);
 }
 
 initPage();
